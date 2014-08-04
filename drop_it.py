@@ -1,9 +1,29 @@
 import dropbox
 
-app_key = 'xasdu3mcasb28iq'
-app_secret = '038cznmg68x1aft'
-token = '_bg2SsPqgsEAAAAAAAAAEGZBA4gaaF3Oo8UGa8_xnvQSGI3oofN7rFu_WlGUyG3K'
+"""
+Uploads the file to dropbox
+Generates download link
+Returns download link
+https://www.dropbox.com/developers/core/docs/python
+"""
 
-flow = dropbox.client.DropboxOAuth2FlowRedirect(app_key, app_secret)
-client = dropbox.client.DropboxClient(token)
-print(client.account_info())
+def upload(name)
+
+	app_key = 'xasdu3mcasb28iq'
+	app_secret = '038cznmg68x1aft'
+	token = '_bg2SsPqgsEAAAAAAAAAEGZBA4gaaF3Oo8UGa8_xnvQSGI3oofN7rFu_WlGUyG3K'
+
+	#flow = dropbox.client.DropboxOAuth2FlowRedirect(app_key, app_secret)
+	client = dropbox.client.DropboxClient(token)
+
+	f = open("""C:\Python33\Bambus\Golden.jpg""", 'rb')
+	response = client.put_file('/Golden.jpg', f)
+	print("uploaded: ", response)
+	f.close()
+
+	x = client.share('/Golden.jpg')
+	print(x)
+	print("You can find the file at:")
+	print(x["url"])
+
+	return(x["url"])
